@@ -1,0 +1,25 @@
+{
+  "name": "woodchopper",
+  "version": "0.0.0",
+  "description": "Selective logging based on command line arguments.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "log",
+    "logger",
+    "node",
+    "js",
+    "print"
+  ],
+  "author": "Will Sutherland",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "mocha": "^2.2.5"
+  },
+  "dependencies": {
+    "underscore": "^1.8.3"
+  }
+}
