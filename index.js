@@ -44,6 +44,9 @@ var check = function(keyString) {
 
 //==================== EXPORTS =========================//
 
-module.exports.log = function (keyString, value) {
-    if (check(keyString)) console.log(value);
+module.exports.log = function (keyString) {
+    if(check(keyString)) {
+        const logArguments = Array.prototype.slice.call(arguments, 1);
+        console.log.apply(console, logArguments);
+    }
 };
