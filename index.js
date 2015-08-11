@@ -12,7 +12,7 @@ var flagIndex = _.findIndex(args, function (arg) {
     return arg === '--print' || arg === '-p';
 });
 
-if(flagIndex !== -1) { // if the --print flag is present
+if (flagIndex !== -1) { // if -p or --print flag is present
 
     args.splice(0, flagIndex + 1); // remove everything before the --print arguments
 
@@ -22,7 +22,7 @@ if(flagIndex !== -1) { // if the --print flag is present
 
     if (nonFlagIndex !== -1) args.splice(nonFlagIndex, args.length - nonFlagIndex);
 
-    if(args.length === 0) {
+    if (args.length === 0) {
         printAllFlag = true;
     } else {
         printFlag = true;
@@ -32,21 +32,25 @@ if(flagIndex !== -1) { // if the --print flag is present
 //==================== FUNCTIONS =======================//
 
 var matchKey = function (keys) {
-    if(_.isString(keys)) return _.contains(args, keys);
-    return _.any(keys, function(key) {
+    if (_.isString(keys)) return _.contains(args, keys);
+    return _.any(keys, function (key) {
         return _.contains(args, key);
     });
 };
 
-var check = function(keyString) {
+var check = function (keyString) {
     return printAllFlag || (printFlag && matchKey(keyString));
 };
 
 //==================== EXPORTS =========================//
 
-module.exports.log = function (keyString) {
-    if(check(keyString)) {
-        const logArguments = Array.prototype.slice.call(arguments, 1);
-        console.log.apply(console, logArguments);
+module.exports = {
+
+    log: function (keyString) {
+        if (check(keyString)) {
+            const logArguments = Array.prototype.slice.call(arguments, 1);
+            console.log.apply(console, logArguments);
+        }
     }
 };
+
