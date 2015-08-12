@@ -1,45 +1,23 @@
 //==================== NODE MODULES ====================//
 
 var _ = require('underscore');
+var flagger = require('flagger')();
 
 //==================== SETUP ===========================//
 
-var args = process.argv.slice(2); // remove node path and file path
-var printAllFlag = false;
-var printFlag = false;
-
-var flagIndex = _.findIndex(args, function (arg) {
-    return arg === '--print' || arg === '-p';
-});
-
-if (flagIndex !== -1) { // if -p or --print flag is present
-
-    args.splice(0, flagIndex + 1); // remove everything before the --print arguments
-
-    var nonFlagIndex = _.findIndex(args, function (arg) { // find the next flag after --print
-        return /^-/.test(arg);
-    });
-
-    if (nonFlagIndex !== -1) args.splice(nonFlagIndex, args.length - nonFlagIndex);
-
-    if (args.length === 0) {
-        printAllFlag = true;
-    } else {
-        printFlag = true;
-    }
-}
+var flag = flagger.print || flagger.p; // '-(-)print' takes precedence over '-(-)p'
 
 //==================== FUNCTIONS =======================//
 
 var matchKey = function (keys) {
-    if (_.isString(keys)) return _.contains(args, keys);
+    if (_.isString(keys)) return _.contains(flag, keys);
     return _.any(keys, function (key) {
-        return _.contains(args, key);
+        return _.contains(flag, key);
     });
 };
 
 var check = function (keyString) {
-    return printAllFlag || (printFlag && matchKey(keyString));
+    return flag && (flag.length === 0 || matchKey(keyString));
 };
 
 //==================== EXPORTS =========================//

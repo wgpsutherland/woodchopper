@@ -4,7 +4,7 @@
   "description": "Selective logging based on command line arguments.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test"
   },
   "keywords": [
     "log",
@@ -20,6 +20,7 @@
     "mocha": "^2.2.5"
   },
   "dependencies": {
+    "flagger": "^1.0.0",
     "underscore": "^1.8.3"
   }
 }
