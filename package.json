@@ -2,22 +2,26 @@
   "name": "woodchopper",
   "version": "0.0.0",
   "description": "Selective logging based on command line arguments.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "mocha test"
+    "prepublish": "coffee --compile --output lib src",
+    "test": "mocha --compilers coffee:coffee-script/register",
+    "test-watch": "mocha --compilers coffee:coffee-script/register"
   },
   "keywords": [
     "log",
     "logger",
     "node",
     "js",
-    "print"
+    "print",
+    "CoffeeScript"
   ],
   "author": "Will Sutherland",
   "license": "ISC",
   "devDependencies": {
     "chai": "^3.2.0",
-    "mocha": "^2.2.5"
+    "mocha": "^2.2.5",
+    "coffee-script": "^1.9.3"
   },
   "dependencies": {
     "flagger": "^1.0.0",
