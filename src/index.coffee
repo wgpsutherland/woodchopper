@@ -1,18 +1,12 @@
-###
-  NODE MODULES
-###
+#==================== NODE MODULES =====================#
 
 flagger = require('flagger')();
 
-###
-  SETUP
-###
+#==================== SETUP ============================#
 
 flag = flagger.print or flagger.p # '-(-)print' takes precedence over '-(-)p'
 
-###
-  FUNCTIONS
-###
+#==================== FUNCTIONS ========================#
 
 matchKey = (keys) ->
   if typeof keys is 'string' and keys in flag then return true
@@ -22,9 +16,7 @@ check = (keyString) -> flag and (flag.length is 0 or matchKey(keyString))
 
 call = (func, keyString, toPrint...) -> if check(keyString) then console[func] toPrint...
 
-###
-  EXPORT
-###
+#==================== EXPORT ===========================#
 
 module.exports =
   assert:         (args...) -> call('assert', args...)

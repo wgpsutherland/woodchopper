@@ -42,5 +42,5 @@ Will result in:
 
 If you give a print statement only one key you do not need to put it in an array:
 
-        chop.log('superfluous', 'This is the fourth print message');
+    chop.log('superfluous', 'This is the fourth print message');
 
