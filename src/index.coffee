@@ -20,9 +20,11 @@ matchKey = (keys) ->
 
 check = (keyString) -> flag and (flag.length is 0 or matchKey(keyString))
 
+call = (func, keyString, toPrint...) -> if check(keyString) then console[func] toPrint...
+
 ###
   EXPORT
 ###
 
 module.exports =
-  log: (keyString, toPrint...) -> if check(keyString) then console.log toPrint...
+  log: (args...) -> call('log', args...)
