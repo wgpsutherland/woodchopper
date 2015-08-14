@@ -1,26 +1,28 @@
-# NODE MODULES
+###
+  NODE MODULES
+###
 
-_ = require('underscore');
 flagger = require('flagger')();
 
-# SETUP
+###
+  SETUP
+###
 
-flag = flagger.print or flagger.p # '-(-)print' takes precedence over '-(-)p'
+flag = flagger.print or flagger.p  # '-(-)print' takes precedence over '-(-)p'
 
-# FUNCTIONS
+###
+  FUNCTIONS
+###
 
 matchKey = (keys) ->
-  if typeof keys is 'string' then return _.contains(flag, keys)
-  _.any keys, (key) ->
-    _.contains(flag, key)
+  if typeof keys is 'string' and keys in flag then return true
+  return true for key in keys when key in flag
 
-check = (keyString) ->
-  flag and (flag.length is 0 or matchKey(keyString))
+check = (keyString) -> flag and (flag.length is 0 or matchKey(keyString))
 
-# EXPORT
+###
+  EXPORT
+###
 
 module.exports =
-  log: (keyString) ->
-    if check(keyString)
-      logArguments = Array.prototype.slice.call(arguments, 1)
-      console.log.apply(console, logArguments)
+  log: (keyString, toPrint...) -> if check(keyString) then console.log toPrint...

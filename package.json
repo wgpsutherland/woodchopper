@@ -24,7 +24,6 @@
     "coffee-script": "^1.9.3"
   },
   "dependencies": {
-    "flagger": "^1.0.0",
-    "underscore": "^1.8.3"
+    "flagger": "^1.0.0"
   }
 }
