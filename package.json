@@ -1,6 +1,6 @@
 {
   "name": "woodchopper",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Selective logging based on command line arguments.",
   "main": "lib/index.js",
   "scripts": {
@@ -14,6 +14,7 @@
     "node",
     "js",
     "print",
+    "console",
     "CoffeeScript"
   ],
   "author": "Will Sutherland",
